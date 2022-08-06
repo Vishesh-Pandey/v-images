@@ -10,20 +10,10 @@ function Home() {
     const [imageArray, setImageArray] = useState([])
 
     async function getImage() {
-        document.getElementById("searchSymbol").src = loading
-        const url = `https://api.unsplash.com/search/photos?query=${text}&client_id=CUoMn8YRFJuKjER5BQdzrVCGIwM1PTeACLuWWZGfzwg`
+        const url = `https://api.unsplash.com/search/photos?query=${(text === "") ? "random" : text}&client_id=CUoMn8YRFJuKjER5BQdzrVCGIwM1PTeACLuWWZGfzwg`;
         let data = await fetch(url)
         let parsedData = await data.json()
         setImageArray(parsedData.results)
-        if (imageArray.length > 9) {
-            document.getElementById("searchSymbol").style.display = "none"
-        }
-        else {
-            document.getElementById("searchSymbol").src = search
-            document.getElementById("searchSymbol").style.display = "inline-block"
-            alert("Enter proper keyword")
-
-        }
     }
 
     const handleOnChange = (event) => {
@@ -47,16 +37,10 @@ function Home() {
                     </div>
                 </div>
 
-                <div className="row">
-                    <div className="col-lg-6 m-auto text-center">
-                        <img id='searchSymbol' className='w-100 rounded' src={search} alt="" />
-                    </div>
-                </div>
-
-                <div className="row bg-secondary">
+                <div className="row text-center">
                     {imageArray.map((element) => {
-                        return <div className="col-md-4" key={element.urls.raw}>
-                            <ImageItem rawUrl={element.urls.raw} />
+                        return <div className="col-md-4" key={element.urls.regular}>
+                            <ImageItem rawUrl={element.urls.regular} />
                         </div>
                     })}
                 </div>
