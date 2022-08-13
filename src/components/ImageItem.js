@@ -9,10 +9,11 @@ function ImageItem(props) {
 
     return (
         <>
-            <div className="container bg-secondary mt-2 p-2 rounded border border-dark">
-                <div className="row">
+            <div className="col position-relative bg-secondary mt-2 p-2 rounded border border-dark">
+                <div className="row ">
                     <div className="col">
                         <img src={props.rawUrl} className='w-100' />
+
                     </div>
                 </div>
                 <div className="row">
@@ -20,7 +21,12 @@ function ImageItem(props) {
                         <button className="btn btn-dark w-100 my-1" id="copyImgAdd" onClick={copyImageAddress}>Copy Image Address</button>
                     </div>
                 </div>
+                <span class={`${props.quality === "high" ? "position-absolute" : "d-none"} top-0 start-100 translate-middle badge rounded-pill bg-danger px-2`}>
+                    HD
+                    <span class="visually-hidden">unread messages</span>
+                </span>
             </div>
+
         </>
     )
 }
