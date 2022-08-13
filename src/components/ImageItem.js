@@ -9,7 +9,7 @@ function ImageItem(props) {
 
     return (
         <>
-            <div className="col position-relative bg-secondary mt-2 p-2 rounded border border-dark">
+            <div className="col position-relative bg-secondary my-2 p-2 rounded border border-dark">
                 <div className="row ">
                     <div className="col">
                         <img src={props.rawUrl} className='w-100' />

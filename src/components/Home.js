@@ -36,7 +36,7 @@ function Home(props) {
 
     return (
         <>
-            <div className="container">
+            <div className="container bg-secondary bg-opacity-50 py-2">
 
                 <div className="row my-2">
                     <div className="col">
@@ -65,11 +65,11 @@ function Home(props) {
                     </div>
                 </div>
 
-                <div className="row bg-secondary py-2" >
+                <div className="row bg-secondary py-3 rounded" >
                     <div className="col-lg-6 h-50 m-auto">
                         <div className="row">
                             <div className="col-8">
-                                <input className='w-100 h-100 fs-3 px-2 rounded' type="text" value={text} onChange={handleOnChange} placeholder='Write keyword here...' />
+                                <input className='w-100 h-100 fs-3 px-2 rounded border-0' type="text" value={text} onChange={handleOnChange} placeholder='Write keyword here...' />
                             </div>
                             <div className="col-4">
                                 <button className="btn btn-dark btn-sm w-100 h-100" onClick={getImage}>Get Images</button>
