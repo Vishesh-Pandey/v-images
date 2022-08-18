@@ -3,11 +3,11 @@ import ImageItem from './ImageItem'
 import loading from './loading.gif'
 import search from './search.png'
 
-
-function Home(props) {
+function Low(props) {
 
     const [text, setText] = useState("")
     const [imageArray, setImageArray] = useState([])
+    const [requiredImages, setRequiredImages] = useState([search])
 
     async function getImage() {
         const url = `https://api.unsplash.com/search/photos?query=${(text === "") ? "random" : text}&client_id=CUoMn8YRFJuKjER5BQdzrVCGIwM1PTeACLuWWZGfzwg`;
@@ -19,6 +19,8 @@ function Home(props) {
     const handleOnChange = (event) => {
         setText(event.target.value)
     }
+
+
 
     return (
         <>
@@ -40,6 +42,7 @@ function Home(props) {
                 </div>
 
 
+
                 <div className="row bg-secondary py-3 rounded" >
                     <div className="col-lg-6 h-50 m-auto">
                         <div className="row">
@@ -56,8 +59,8 @@ function Home(props) {
                 <div className="row text-center">
                     {
                         imageArray.map((element) => {
-                            return <div className="col-md-4" key={element.urls.regular}>
-                                <ImageItem rawUrl={element.urls.regular} quality={props.quality} />
+                            return <div className="col-md-4" key={element.urls.thumb}>
+                                <ImageItem rawUrl={element.urls.thumb} quality={props.quality} />
                             </div>
                         })
 
@@ -69,4 +72,4 @@ function Home(props) {
     )
 }
 
-export default Home
+export default Low

@@ -21,9 +21,9 @@ function ImageItem(props) {
                         <button className="btn btn-dark w-100 my-1" id="copyImgAdd" onClick={copyImageAddress}>Copy Image Address</button>
                     </div>
                 </div>
-                <span class={`${props.quality === "high" ? "position-absolute" : "d-none"} top-0 start-100 translate-middle badge rounded-pill bg-danger px-2`}>
+                <span className={`${props.quality === "high" ? "position-absolute" : "d-none"} top-0 start-100 translate-middle badge rounded-pill bg-danger px-2`}>
                     HD
-                    <span class="visually-hidden">unread messages</span>
+                    <span className="visually-hidden">unread messages</span>
                 </span>
             </div>
 
