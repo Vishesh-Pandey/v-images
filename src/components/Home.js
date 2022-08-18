@@ -27,7 +27,7 @@ function Home(props) {
                 <div className="row my-2">
                     <div className="col">
                         <div className="alert alert-warning alert-dismissible fade show" role="alert">
-                            <strong>Update : </strong> Get both high and low quality images
+                            <strong>Update : </strong> Get both high and low quality images. Switch to <i>Low Quality</i> images from <b>navigation bar.</b>
                             <button
                                 type="button"
                                 className="btn-close"
@@ -46,8 +46,12 @@ function Home(props) {
                             <div className="col-8">
                                 <input className='w-100 h-100 fs-3 px-2 rounded border-0' type="text" value={text} onChange={handleOnChange} placeholder='Write keyword here...' />
                             </div>
-                            <div className="col-4">
+                            <div className="col-4 position-relative">
                                 <button className="btn btn-dark btn-sm w-100 h-100" onClick={getImage}>Get Images</button>
+                                <span className={`${props.quality === "high" ? "position-absolute" : "d-none"} top-0 start-100 translate-middle badge rounded-pill bg-danger px-2`}>
+                                    HD
+                                    <span className="visually-hidden">unread messages</span>
+                                </span>
                             </div>
                         </div>
                     </div>
