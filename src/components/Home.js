@@ -27,7 +27,7 @@ function Home(props) {
                 <div className="row my-2">
                     <div className="col">
                         <div className="alert alert-warning alert-dismissible fade show" role="alert">
-                            <strong>Update : </strong> Get both high and low quality images. Switch to <i>Low Quality</i> images from <b>navigation bar.</b>
+                            <strong>Update : </strong> Get both high and low quality images. Switch to <i>Low Quality</i> images from <b>navigation bar. </b>
                             <button
                                 type="button"
                                 className="btn-close"

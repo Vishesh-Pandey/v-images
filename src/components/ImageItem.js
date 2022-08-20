@@ -12,8 +12,9 @@ function ImageItem(props) {
             <div className="col position-relative bg-secondary my-2 p-2 rounded border border-dark">
                 <div className="row ">
                     <div className="col">
-                        <img src={props.rawUrl} className='w-100' />
-
+                        <a target="_blank" href={props.rawUrl}>
+                            <img src={props.rawUrl} className='w-100' />
+                        </a>
                     </div>
                 </div>
                 <div className="row">
