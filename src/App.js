@@ -1,17 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import { Route, Routes } from 'react-router-dom';
 import Low from './components/Low';
+import { useState } from 'react';
 
 function App() {
+
+  const [theme, setTheme] = useState("dark")
+
+  const changeTheme = () => {
+    if (theme === "dark") {
+      setTheme("light")
+    }
+    else {
+      setTheme("dark")
+    }
+
+  }
+
+
   return (
     <>
-      <Navbar />
+      <Navbar changeTheme={changeTheme} theme={theme} />
       <Routes>
-        <Route path="/v-images" element={<Low quality="low" />} />
-        <Route path="/high" element={<Home quality="high" />} />
+        <Route path="/low" element={<Low quality="low" theme={theme} />} />
+        <Route path="/v-images" element={<Home quality="high" theme={theme} />} />
       </Routes>
     </>
   );

@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
 import ImageItem from './ImageItem'
-import loading from './loading.gif'
-import search from './search.png'
-
 
 function Home(props) {
 
