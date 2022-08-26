@@ -7,17 +7,6 @@ function ImageItem(props) {
         navigator.clipboard.writeText(props.rawUrl);
     }
 
-    const toastTrigger = document.getElementById('liveToastBtn')
-    const toastLiveExample = document.getElementById('liveToast')
-    if (toastTrigger) {
-        toastTrigger.addEventListener('click', () => {
-            const toast = new bootstrap.Toast(toastLiveExample)
-
-            toast.show()
-        })
-    }
-
-
     return (
         <>
             <div className="col position-relative bg-secondary my-2 p-2 rounded border border-dark">
