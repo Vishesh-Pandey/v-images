@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Navbar(props) {
     return (
         <>
-            <nav className={`navbar navbar-${(props.theme === "dark") ? "light" : "dark"} navbar-expand-lg bg-${(props.theme === "dark") ? "light" : "dark"} sticky-top`}>
+            <nav className={`navbar navbar-${(props.theme === "dark") ? "dark" : "light"} navbar-expand-lg bg-${(props.theme === "dark") ? "dark" : "light"} sticky-top`}>
                 <div className="container-fluid">
                     <a className="navbar-brand" href="/">vImages</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,8 +16,12 @@ function Navbar(props) {
                                 <Link to="/low" className="nav-link" aria-current="page" href="#">Low Quality</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/v-images" className="nav-link bg-danger rounded" aria-current="page" href="#">High Quality</Link>
+                                <Link to="/v-images" className="nav-link rounded" aria-current="page" href="#">High Quality</Link>
                             </li>
+                            <li className="nav-item">
+                                <a target="_blank" href="https://vishesh-pandey.github.io/v-notes/" className="nav-link bg-warning rounded" aria-current="page" >Try vNotes</a>
+                            </li>
+
                         </ul>
                         <div className="form-check form-switch">
                             <input
@@ -28,8 +32,8 @@ function Navbar(props) {
                                 defaultChecked=""
                                 onClick={props.changeTheme}
                             />
-                            <label className={`form-check-label text-${(props.theme === "light" ? "light" : "dark")}`} htmlFor="flexSwitchCheckChecked">
-                                {(props.theme === "light" ? "Disable Dark Mode" : "Enable Dark mode")}
+                            <label className={`form-check-label text-${(props.theme === "light" ? "dark" : "light")}`} htmlFor="flexSwitchCheckChecked">
+                                {(props.theme === "light" ? "Disable light Mode" : "Enable light mode")}
                             </label>
                         </div>
                     </div>
