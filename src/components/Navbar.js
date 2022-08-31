@@ -6,7 +6,7 @@ function Navbar(props) {
         <>
             <nav className={`navbar navbar-${(props.theme === "dark") ? "dark" : "light"} navbar-expand-lg bg-${(props.theme === "dark") ? "dark" : "light"} sticky-top`}>
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="/">vImages</a>
+                    <Link className="navbar-brand" to="/v-images">vImages</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -20,6 +20,9 @@ function Navbar(props) {
                             </li>
                             <li className="nav-item">
                                 <a target="_blank" href="https://vishesh-pandey.github.io/v-notes/" className="nav-link bg-warning rounded" aria-current="page" >Try vNotes</a>
+                            </li>
+                            <li className="nav-item">
+                                <a target="_blank" href="https://github.com/Vishesh-Pandey/v-images" className="nav-link" aria-current="page" >Contribute</a>
                             </li>
 
                         </ul>

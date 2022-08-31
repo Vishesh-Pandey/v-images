@@ -45,7 +45,7 @@ function Home(props) {
                             </div>
                             <div className="col-4 position-relative">
                                 <button className="btn btn-dark btn-sm w-100 h-100" onClick={getImage}>Get Images</button>
-                                <span className={`${props.quality === "high" ? "position-absolute" : "d-none"} top-0 start-100 translate-middle badge rounded-pill bg-danger px-2`}>
+                                <span className={`${props.quality === "high" ? "position-absolute" : "d-none"} top-0 start-75 translate-middle badge rounded-pill bg-danger px-2`}>
                                     HD
                                     <span className="visually-hidden">unread messages</span>
                                 </span>
