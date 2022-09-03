@@ -6,7 +6,7 @@ function Home(props) {
     const [text, setText] = useState("")
     const [imageArray, setImageArray] = useState([])
 
-    async function getImage() {
+    const getImage = async () => {
         const url = `https://api.unsplash.com/search/photos?query=${(text === "") ? "random" : text}&client_id=CUoMn8YRFJuKjER5BQdzrVCGIwM1PTeACLuWWZGfzwg`;
         let data = await fetch(url);
         let parsedData = await data.json();
@@ -32,7 +32,6 @@ function Home(props) {
                                 aria-label="Close"
                             />
                         </div>
-
                     </div>
                 </div>
 
@@ -61,7 +60,6 @@ function Home(props) {
                                 <ImageItem rawUrl={element.urls.regular} quality={props.quality} />
                             </div>
                         })
-
                     }
                 </div>
 

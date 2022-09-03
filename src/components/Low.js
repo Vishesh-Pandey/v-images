@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
 import ImageItem from './ImageItem'
-import loading from './loading.gif'
-import search from './search.png'
 
 function Low(props) {
 
     const [text, setText] = useState("")
     const [imageArray, setImageArray] = useState([])
-    const [requiredImages, setRequiredImages] = useState([search])
 
-    async function getImage() {
+    const getImage = async () => {
         const url = `https://api.unsplash.com/search/photos?query=${(text === "") ? "random" : text}&client_id=CUoMn8YRFJuKjER5BQdzrVCGIwM1PTeACLuWWZGfzwg`;
         let data = await fetch(url);
         let parsedData = await data.json();
@@ -19,8 +16,6 @@ function Low(props) {
     const handleOnChange = (event) => {
         setText(event.target.value)
     }
-
-
 
     return (
         <>
@@ -37,11 +32,8 @@ function Low(props) {
                                 aria-label="Close"
                             />
                         </div>
-
                     </div>
                 </div>
-
-
 
                 <div className="row bg-secondary py-3 rounded" >
                     <div className="col-lg-6 h-50 m-auto">
@@ -63,7 +55,6 @@ function Low(props) {
                                 <ImageItem rawUrl={element.urls.thumb} quality={props.quality} />
                             </div>
                         })
-
                     }
                 </div>
 

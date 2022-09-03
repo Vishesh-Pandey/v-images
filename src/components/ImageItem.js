@@ -1,9 +1,8 @@
 import React from 'react'
 
-
 function ImageItem(props) {
 
-    function copyImageAddress() {
+    const copyImageAddress = () => {
         navigator.clipboard.writeText(props.rawUrl);
     }
 
@@ -12,8 +11,8 @@ function ImageItem(props) {
             <div className="col position-relative bg-secondary my-2 p-2 rounded border border-dark">
                 <div className="row ">
                     <div className="col">
-                        <a target="_blank" href={props.rawUrl}>
-                            <img src={props.rawUrl} className='w-100' />
+                        <a target="_blank" rel='noreferrer' href={props.rawUrl}>
+                            <img src={props.rawUrl} className='w-100' alt="v" />
                         </a>
                     </div>
                 </div>
@@ -51,9 +50,6 @@ function ImageItem(props) {
                     <div className="toast-body">Hello, world! This is a toast message.</div>
                 </div>
             </div>
-
-
-
 
         </>
     )
