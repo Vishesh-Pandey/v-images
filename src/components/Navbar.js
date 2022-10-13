@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import vicon from "./favicon_ico.png";
 
 function Navbar(props) {
   return (
@@ -12,6 +13,9 @@ function Navbar(props) {
         } sticky-top`}
       >
         <div className="container-fluid">
+          <Link className="navbar-brand" to="/v-images">
+            <img src={vicon} width={40} alt="" />
+          </Link>
           <Link className="navbar-brand" to="/v-images">
             vImages
           </Link>

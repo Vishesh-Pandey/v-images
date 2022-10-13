@@ -5,13 +5,15 @@ import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
 
 function App() {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("light");
 
   const changeTheme = () => {
     if (theme === "dark") {
       setTheme("light");
+      document.body.style.backgroundColor = "white";
     } else {
       setTheme("dark");
+      document.body.style.backgroundColor = "#212529";
     }
   };
 

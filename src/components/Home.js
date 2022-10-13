@@ -28,17 +28,15 @@ function Home(props) {
 
   return (
     <>
-      <div className="container bg-secondary bg-opacity-50 py-2">
+      <div className="container py-2">
         <div className="row my-2">
           <div className="col">
             <div
               className="alert alert-warning alert-dismissible fade show"
               role="alert"
             >
-              <strong>Update : </strong> Get both high and low quality images.
-              Switch to{" "}
-              <i>{`${props.quality == "low" ? " High" : "low"} Quality`}</i>{" "}
-              images from <b>navigation bar. </b>
+              <strong>vImages : </strong> The best <b>free</b> stock photos and{" "}
+              <b>royalty free</b> images.
               <button
                 type="button"
                 className="btn-close"
@@ -49,7 +47,7 @@ function Home(props) {
           </div>
         </div>
 
-        <div className="row bg-secondary py-3 rounded">
+        <div className="row bg-secondary py-3 rounded mx-1 my-3">
           <div className="col-lg-6 h-50 m-auto">
             <div className="row">
               <div className="col-8">
