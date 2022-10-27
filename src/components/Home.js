@@ -9,11 +9,11 @@ function Home(props) {
   const getImage = async () => {
     const url = `https://api.unsplash.com/search/photos?query=${
       text === "" ? "random" : text
-    }&client_id=CUoMn8YRFJuKjER5BQdzrVCGIwM1PTeACLuWWZGfzwg`;
+    }&client_id=${props.apiKey}`;
     let data = await fetch(url);
     let parsedData = await data.json();
 
-    if (parsedData.results.length == 0) {
+    if (parsedData.results.length === 0) {
       setImageArray([
         { urls: { regular: imageNotFound, thumb: imageNotFound } },
       ]);
@@ -85,7 +85,7 @@ function Home(props) {
               <div className="col-md-4" key={element.urls.regular}>
                 <ImageItem
                   rawUrl={
-                    props.quality == "low"
+                    props.quality === "low"
                       ? element.urls.thumb
                       : element.urls.regular
                   }

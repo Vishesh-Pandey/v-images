@@ -99,8 +99,8 @@ function Navbar(props) {
                 htmlFor="flexSwitchCheckChecked"
               >
                 {props.theme === "light"
-                  ? "Disable light Mode"
-                  : "Enable light mode"}
+                  ? "Enable Dark Mode"
+                  : "Disable Dark Mode"}
               </label>
             </div>
           </div>

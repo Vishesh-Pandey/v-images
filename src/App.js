@@ -5,6 +5,8 @@ import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
 
 function App() {
+  const apiKey = process.env.REACT_APP_MY_API;
+
   const [theme, setTheme] = useState("light");
 
   const changeTheme = () => {
@@ -24,7 +26,7 @@ function App() {
         <Route path="/low" element={<Home quality="low" theme={theme} />} />
         <Route
           path="/v-images"
-          element={<Home quality="high" theme={theme} />}
+          element={<Home apiKey={apiKey} quality="high" theme={theme} />}
         />
       </Routes>
     </>
