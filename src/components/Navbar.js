@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import vicon from "./favicon_ico.png";
 
 function Navbar(props) {
+  let location = useLocation();
   return (
     <>
       <nav
@@ -35,7 +36,9 @@ function Navbar(props) {
               <li className="nav-item">
                 <Link
                   to="/low"
-                  className="nav-link"
+                  className={`${
+                    location.pathname === "/low" ? "bg-warning rounded" : ""
+                  } nav-link`}
                   aria-current="page"
                   href="#"
                 >
@@ -45,7 +48,11 @@ function Navbar(props) {
               <li className="nav-item">
                 <Link
                   to="/v-images"
-                  className="nav-link rounded"
+                  className={`${
+                    location.pathname === "/v-images"
+                      ? "bg-warning rounded"
+                      : ""
+                  } nav-link`}
                   aria-current="page"
                   href="#"
                 >
