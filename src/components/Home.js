@@ -7,18 +7,24 @@ function Home(props) {
   const [imageArray, setImageArray] = useState([]);
 
   const getImage = async () => {
-    const url = `https://api.unsplash.com/search/photos?query=${
-      text === "" ? "random" : text
-    }&client_id=${props.apiKey}`;
-    let data = await fetch(url);
-    let parsedData = await data.json();
+    try {
+      const url = `https://api.unsplash.com/search/photos?query=${
+        text === "" ? "random" : text
+      }&client_id=${props.apiKey}`;
+      let data = await fetch(url);
+      let parsedData = await data.json();
 
-    if (parsedData.results.length === 0) {
+      if (parsedData.results.length === 0) {
+        setImageArray([
+          { urls: { regular: imageNotFound, thumb: imageNotFound } },
+        ]);
+      } else {
+        setImageArray(parsedData.results);
+      }
+    } catch (error) {
       setImageArray([
         { urls: { regular: imageNotFound, thumb: imageNotFound } },
       ]);
-    } else {
-      setImageArray(parsedData.results);
     }
   };
 
