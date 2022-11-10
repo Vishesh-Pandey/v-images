@@ -5,12 +5,15 @@ import imageNotFound from "./imageNotFound.gif";
 function Home(props) {
   const [text, setText] = useState("");
   const [imageArray, setImageArray] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
 
   const getImage = async () => {
     try {
-      const url = `https://api.unsplash.com/search/photos?query=${
-        text === "" ? "random" : text
+      const url = `https://api.unsplash.com/search/photos?page=${page}&query=${
+        text === "" ? "science" : text
       }&client_id=${props.apiKey}`;
+
       let data = await fetch(url);
       let parsedData = await data.json();
 
@@ -20,7 +23,27 @@ function Home(props) {
         ]);
       } else {
         setImageArray(parsedData.results);
+        setTotalPages(parsedData.total_pages);
       }
+    } catch (error) {
+      setImageArray([
+        { urls: { regular: imageNotFound, thumb: imageNotFound } },
+      ]);
+    }
+  };
+
+  const loadMoreImages = async () => {
+    let previousImages = imageArray;
+    try {
+      const url = `https://api.unsplash.com/search/photos?page=${
+        page + 1
+      }&query=${text === "" ? "science" : text}&client_id=${props.apiKey}`;
+
+      let data = await fetch(url);
+      let parsedData = await data.json();
+
+      setImageArray(previousImages.concat(parsedData.results));
+      setPage(page + 1);
     } catch (error) {
       setImageArray([
         { urls: { regular: imageNotFound, thumb: imageNotFound } },
@@ -34,8 +57,8 @@ function Home(props) {
 
   return (
     <>
-      <div className="container py-2">
-        <div className="row my-2">
+      <div id="top" className="container py-2">
+        <div id="topped" className="row my-2">
           <div className="col">
             <div
               className="alert alert-warning alert-dismissible fade show"
@@ -100,6 +123,19 @@ function Home(props) {
               </div>
             );
           })}
+        </div>
+
+        <div className={`row py-5 ${totalPages === 0 ? "d-none" : ""}`}>
+          <div className="col text-center">
+            <button
+              onClick={loadMoreImages}
+              className={`btn btn-secondary w-100 my-2 ${
+                page === totalPages ? "disabled" : ""
+              }`}
+            >
+              Load More Images ( beta )
+            </button>
+          </div>
         </div>
       </div>
     </>
