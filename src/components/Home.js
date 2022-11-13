@@ -8,7 +8,7 @@ function Home(props) {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
 
-  const getImage = async () => {
+  const getImage = async (page) => {
     try {
       const url = `https://api.unsplash.com/search/photos?page=${page}&query=${
         text === "" ? "science" : text
@@ -22,28 +22,9 @@ function Home(props) {
           { urls: { regular: imageNotFound, thumb: imageNotFound } },
         ]);
       } else {
-        setImageArray(parsedData.results);
+        setImageArray(imageArray.concat(parsedData.results));
         setTotalPages(parsedData.total_pages);
       }
-    } catch (error) {
-      setImageArray([
-        { urls: { regular: imageNotFound, thumb: imageNotFound } },
-      ]);
-    }
-  };
-
-  const loadMoreImages = async () => {
-    let previousImages = imageArray;
-    try {
-      const url = `https://api.unsplash.com/search/photos?page=${
-        page + 1
-      }&query=${text === "" ? "science" : text}&client_id=${props.apiKey}`;
-
-      let data = await fetch(url);
-      let parsedData = await data.json();
-
-      setImageArray(previousImages.concat(parsedData.results));
-      setPage(page + 1);
     } catch (error) {
       setImageArray([
         { urls: { regular: imageNotFound, thumb: imageNotFound } },
@@ -91,7 +72,9 @@ function Home(props) {
               <div className="col-4 position-relative">
                 <button
                   className="btn btn-dark btn-sm w-100 h-100"
-                  onClick={getImage}
+                  onClick={() => {
+                    getImage(1);
+                  }}
                 >
                   Get Images
                 </button>
@@ -128,7 +111,11 @@ function Home(props) {
         <div className={`row py-5 ${totalPages === 0 ? "d-none" : ""}`}>
           <div className="col text-center">
             <button
-              onClick={loadMoreImages}
+              onClick={() => {
+                console.log("Nothing");
+                getImage(page + 1);
+                setPage(page + 1);
+              }}
               className={`btn btn-secondary w-100 my-2 ${
                 page === totalPages ? "disabled" : ""
               }`}
