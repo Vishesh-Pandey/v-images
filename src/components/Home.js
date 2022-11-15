@@ -112,7 +112,6 @@ function Home(props) {
           <div className="col text-center">
             <button
               onClick={() => {
-                console.log("Nothing");
                 getImage(page + 1);
                 setPage(page + 1);
               }}
@@ -121,6 +120,16 @@ function Home(props) {
               }`}
             >
               Load More Images ( beta )
+            </button>
+            <button
+              onClick={() => {
+                window.scrollTo(0, 0);
+              }}
+              className={`btn btn-secondary w-100 my-2 ${
+                page === totalPages ? "disabled" : ""
+              }`}
+            >
+              Back to Top
             </button>
           </div>
         </div>
