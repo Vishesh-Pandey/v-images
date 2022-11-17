@@ -7,8 +7,13 @@ function Home(props) {
   const [imageArray, setImageArray] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+  let newSearch = false;
 
   const getImage = async (page) => {
+    if (page === -1) {
+      page = 1;
+      newSearch = true;
+    }
     try {
       const url = `https://api.unsplash.com/search/photos?page=${page}&query=${
         text === "" ? "science" : text
@@ -22,7 +27,12 @@ function Home(props) {
           { urls: { regular: imageNotFound, thumb: imageNotFound } },
         ]);
       } else {
-        setImageArray(imageArray.concat(parsedData.results));
+        console.log(newSearch);
+        if (newSearch === true) {
+          setImageArray(parsedData.results);
+        } else {
+          setImageArray(imageArray.concat(parsedData.results));
+        }
         setTotalPages(parsedData.total_pages);
       }
     } catch (error) {
@@ -73,7 +83,7 @@ function Home(props) {
                 <button
                   className="btn btn-dark btn-sm w-100 h-100"
                   onClick={() => {
-                    getImage(1);
+                    getImage(-1); // -1 represents search with new keyword
                   }}
                 >
                   Get Images
