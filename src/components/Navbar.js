@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import vicon from "./favicon_ico.png";
 
 function Navbar(props) {
   let location = useLocation();
+
   return (
     <>
       <nav
@@ -15,7 +16,7 @@ function Navbar(props) {
       >
         <div className="container-fluid">
           <Link className="navbar-brand" to="/v-images">
-            <img src={vicon} width={40} alt="" />
+            <img src={vicon} width={40} alt="v-images" />
           </Link>
           <Link className="navbar-brand" to="/v-images">
             vImages
@@ -59,6 +60,43 @@ function Navbar(props) {
                   High Quality
                 </Link>
               </li>
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Filters
+                </a>
+                <ul className="dropdown-menu">
+                  <li className="px-2">
+                    <div className="form-check">
+                      <input
+                        onClick={() => {
+                          if (props.onlySquare === false) {
+                            props.setOnlySquare(true);
+                          } else {
+                            props.setOnlySquare(false);
+                          }
+                        }}
+                        className="form-check-input"
+                        type="checkbox"
+                        defaultValue=""
+                        id="flexCheckIndeterminate"
+                      />
+                      <label
+                        className="form-check-label"
+                        htmlFor="flexCheckIndeterminate"
+                      >
+                        Square only
+                      </label>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+
               <li className="nav-item">
                 <a
                   target="_blank"

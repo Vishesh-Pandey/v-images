@@ -7,8 +7,10 @@ function Home(props) {
   const [imageArray, setImageArray] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+  const filterSquare = (image) => {
+    return image.height === image.width;
+  };
   let newSearch = false;
-
   const getImage = async (page) => {
     if (page === -1) {
       page = 1;
@@ -27,11 +29,21 @@ function Home(props) {
           { urls: { regular: imageNotFound, thumb: imageNotFound } },
         ]);
       } else {
-        console.log(newSearch);
         if (newSearch === true) {
-          setImageArray(parsedData.results);
+          let filterImage = parsedData.results;
+          if (props.onlySquare === true) {
+            setImageArray(filterImage.filter(filterSquare));
+          } else {
+            setImageArray(parsedData.results);
+          }
         } else {
-          setImageArray(imageArray.concat(parsedData.results));
+          if (props.onlySquare === true) {
+            setImageArray(
+              imageArray.concat(parsedData.results.filter(filterSquare))
+            );
+          } else {
+            setImageArray(imageArray.concat(parsedData.results));
+          }
         }
         setTotalPages(parsedData.total_pages);
       }

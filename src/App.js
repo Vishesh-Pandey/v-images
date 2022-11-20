@@ -8,6 +8,7 @@ function App() {
   const apiKey = process.env.REACT_APP_MY_API;
 
   const [theme, setTheme] = useState("light");
+  const [onlySquare, setOnlySquare] = useState(false);
 
   const changeTheme = () => {
     if (theme === "dark") {
@@ -21,12 +22,34 @@ function App() {
 
   return (
     <>
-      <Navbar changeTheme={changeTheme} theme={theme} />
+      <Navbar
+        changeTheme={changeTheme}
+        theme={theme}
+        onlySquare={onlySquare}
+        setOnlySquare={setOnlySquare}
+      />
       <Routes>
-        <Route path="/low" element={<Home quality="low" theme={theme} />} />
+        <Route
+          path="/low"
+          element={
+            <Home
+              quality="low"
+              apiKey={apiKey}
+              theme={theme}
+              onlySquare={onlySquare}
+            />
+          }
+        />
         <Route
           path="/v-images"
-          element={<Home apiKey={apiKey} quality="high" theme={theme} />}
+          element={
+            <Home
+              apiKey={apiKey}
+              quality="high"
+              theme={theme}
+              onlySquare={onlySquare}
+            />
+          }
         />
       </Routes>
     </>
