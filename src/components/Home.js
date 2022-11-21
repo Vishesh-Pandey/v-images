@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ImageItem from "./ImageItem";
 import imageNotFound from "./imageNotFound.gif";
 
@@ -11,6 +11,7 @@ function Home(props) {
     return image.height === image.width;
   };
   let newSearch = false;
+
   const getImage = async (page) => {
     if (page === -1) {
       page = 1;
@@ -18,7 +19,7 @@ function Home(props) {
     }
     try {
       const url = `https://api.unsplash.com/search/photos?page=${page}&query=${
-        text === "" ? "science" : text
+        text === "" ? "nature" : text
       }&client_id=${props.apiKey}`;
 
       let data = await fetch(url);
@@ -53,6 +54,11 @@ function Home(props) {
       ]);
     }
   };
+
+  useEffect(() => {
+    getImage(Math.floor(Math.random() * 10));
+    console.log(Math.floor(Math.random() * 10));
+  }, []);
 
   const handleOnChange = (event) => {
     setText(event.target.value);
