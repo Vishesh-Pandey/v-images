@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import vicon from "./favicon_ico.png";
+import vicon from "../assets/favicon_ico.png";
 
 function Navbar(props) {
   let location = useLocation();
@@ -63,7 +63,7 @@ function Navbar(props) {
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
-                  href="#"
+                  href="/"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
@@ -100,6 +100,7 @@ function Navbar(props) {
               <li className="nav-item">
                 <a
                   target="_blank"
+                  rel="noreferrer"
                   href="https://vishesh-pandey.github.io/v-notes/"
                   className="nav-link"
                   aria-current="page"
@@ -110,6 +111,7 @@ function Navbar(props) {
               <li className="nav-item">
                 <a
                   target="_blank"
+                  rel="noreferrer"
                   href="https://vishesh-pandey.github.io/v-type/"
                   className="nav-link"
                   aria-current="page"
@@ -120,6 +122,7 @@ function Navbar(props) {
               <li className="nav-item">
                 <a
                   target="_blank"
+                  rel="noreferrer"
                   href="https://github.com/Vishesh-Pandey/v-images"
                   className="nav-link"
                   aria-current="page"

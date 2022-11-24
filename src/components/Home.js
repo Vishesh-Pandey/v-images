@@ -1,6 +1,7 @@
+import "../App.css";
 import React, { useState, useEffect } from "react";
 import ImageItem from "./ImageItem";
-import imageNotFound from "./imageNotFound.gif";
+import imageNotFound from "../assets/imageNotFound.gif";
 
 function Home(props) {
   const [text, setText] = useState("");
@@ -57,7 +58,6 @@ function Home(props) {
 
   useEffect(() => {
     getImage(Math.floor(Math.random() * 10));
-    console.log(Math.floor(Math.random() * 10));
   }, []);
 
   const handleOnChange = (event) => {
@@ -85,7 +85,7 @@ function Home(props) {
           </div>
         </div>
 
-        <div className="row bg-secondary py-3 rounded mx-1 my-3">
+        <div id="search-bar" className="row bg-secondary py-3 rounded mx-1 ">
           <div className="col-lg-6 h-50 m-auto">
             <div className="row">
               <div className="col-8">
@@ -119,7 +119,7 @@ function Home(props) {
           </div>
         </div>
 
-        <div className="row text-center">
+        <div id="image-items" className="row text-center">
           {imageArray.map((element) => {
             return (
               <div className="col-md-4" key={element.urls.regular}>

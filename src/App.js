@@ -23,6 +23,7 @@ function App() {
   return (
     <>
       <Navbar
+        id="navbar"
         changeTheme={changeTheme}
         theme={theme}
         onlySquare={onlySquare}
