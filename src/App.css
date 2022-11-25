@@ -30,3 +30,18 @@
     opacity: 1;
   }
 }
+
+#image-item{
+  animation-name: image-item;
+  animation-duration: 1.5s;
+  animation-iteration-count: 1;
+}
+
+@keyframes image-item {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}

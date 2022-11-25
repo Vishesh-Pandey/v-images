@@ -1,25 +1,34 @@
+import "../App.css";
 import React from "react";
+import loading from "../assets/loading.gif";
+import { useState } from "react";
+import { useEffect } from "react";
 
 function ImageItem(props) {
+  const [image, setImage] = useState(loading);
   const copyImageAddress = () => {
     navigator.clipboard.writeText(props.rawUrl);
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      setImage(props.rawUrl);
+    }, 200);
+  }, []);
+
   return (
     <>
-      <div className="col position-relative bg-light my-2 p-2 rounded border border-dark">
+      <div
+        id="image-item"
+        className="col position-relative bg-light my-2 p-2 rounded border border-dark"
+      >
         <div className="row ">
           <div className="col">
-            <img
-              src={props.rawUrl}
-              id="openImage"
-              className="w-100 rounded"
-              alt="v"
-            />
+            <img src={image} id="openImage" className="w-100 rounded" alt="v" />
           </div>
         </div>
         <div className="row">
-          <div className="col-lg-6 m-auto">
+          <div className="col m-auto">
             <button
               className="btn btn-dark w-100 my-1"
               id="copyImgAdd"
