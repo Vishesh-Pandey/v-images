@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
+import FilterState from "./context/filter/FilterState";
 
 function App() {
   const apiKey = process.env.REACT_APP_MY_API;
@@ -22,37 +23,39 @@ function App() {
 
   return (
     <>
-      <Navbar
-        id="navbar"
-        changeTheme={changeTheme}
-        theme={theme}
-        onlySquare={onlySquare}
-        setOnlySquare={setOnlySquare}
-      />
-      <Routes>
-        <Route
-          path="/low"
-          element={
-            <Home
-              quality="low"
-              apiKey={apiKey}
-              theme={theme}
-              onlySquare={onlySquare}
-            />
-          }
+      <FilterState>
+        <Navbar
+          id="navbar"
+          changeTheme={changeTheme}
+          theme={theme}
+          onlySquare={onlySquare}
+          setOnlySquare={setOnlySquare}
         />
-        <Route
-          path="/v-images"
-          element={
-            <Home
-              apiKey={apiKey}
-              quality="high"
-              theme={theme}
-              onlySquare={onlySquare}
-            />
-          }
-        />
-      </Routes>
+        <Routes>
+          <Route
+            path="/low"
+            element={
+              <Home
+                quality="low"
+                apiKey={apiKey}
+                theme={theme}
+                onlySquare={onlySquare}
+              />
+            }
+          />
+          <Route
+            path="/v-images"
+            element={
+              <Home
+                apiKey={apiKey}
+                quality="high"
+                theme={theme}
+                onlySquare={onlySquare}
+              />
+            }
+          />
+        </Routes>
+      </FilterState>
     </>
   );
 }

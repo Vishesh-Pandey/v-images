@@ -1,9 +1,12 @@
 import React from "react";
+import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import vicon from "../assets/favicon_ico.png";
+import filterContext from "../context/filter/filterContext";
 
 function Navbar(props) {
   let location = useLocation();
+  const filter = useContext(filterContext);
 
   return (
     <>
@@ -68,17 +71,17 @@ function Navbar(props) {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Filters
+                  Filters ( beta )
                 </a>
                 <ul className="dropdown-menu">
                   <li className="px-2">
                     <div className="form-check">
                       <input
                         onClick={() => {
-                          if (props.onlySquare === false) {
-                            props.setOnlySquare(true);
+                          if (filter.state.onlySquare === false) {
+                            filter.update(true);
                           } else {
-                            props.setOnlySquare(false);
+                            filter.update(false);
                           }
                         }}
                         className="form-check-input"

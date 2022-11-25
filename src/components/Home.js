@@ -2,8 +2,11 @@ import "../App.css";
 import React, { useState, useEffect } from "react";
 import ImageItem from "./ImageItem";
 import imageNotFound from "../assets/imageNotFound.gif";
+import filterContext from "../context/filter/filterContext";
+import { useContext } from "react";
 
 function Home(props) {
+  const filter = useContext(filterContext);
   const [text, setText] = useState("");
   const [imageArray, setImageArray] = useState([]);
   const [page, setPage] = useState(1);
@@ -33,13 +36,14 @@ function Home(props) {
       } else {
         if (newSearch === true) {
           let filterImage = parsedData.results;
-          if (props.onlySquare === true) {
+          console.log(filter.state.onlySquare);
+          if (filter.state.onlySquare === true) {
             setImageArray(filterImage.filter(filterSquare));
           } else {
             setImageArray(parsedData.results);
           }
         } else {
-          if (props.onlySquare === true) {
+          if (filter.state.onlySquare === true) {
             setImageArray(
               imageArray.concat(parsedData.results.filter(filterSquare))
             );
@@ -66,7 +70,7 @@ function Home(props) {
 
   return (
     <>
-      <div id="top" className="container py-2">
+      <div id="home" className="container py-2">
         <div id="topped" className="row my-2">
           <div className="col">
             <div
@@ -147,7 +151,7 @@ function Home(props) {
                 page === totalPages ? "disabled" : ""
               }`}
             >
-              Load More Images ( beta )
+              Load More Images
             </button>
             <button
               onClick={() => {
