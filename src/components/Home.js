@@ -14,6 +14,7 @@ function Home(props) {
   const filterSquare = (image) => {
     return image.height === image.width;
   };
+
   let newSearch = false;
 
   const getImage = async (page) => {

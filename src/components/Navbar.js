@@ -3,18 +3,18 @@ import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import vicon from "../assets/favicon_ico.png";
 import filterContext from "../context/filter/filterContext";
+import themeContext from "../context/theme/themeContext";
 
 function Navbar(props) {
   let location = useLocation();
   const filter = useContext(filterContext);
+  const theme = useContext(themeContext);
 
   return (
     <>
       <nav
-        className={`navbar navbar-${
-          props.theme === "dark" ? "dark" : "light"
-        } navbar-expand-lg bg-${
-          props.theme === "dark" ? "dark" : "light"
+        className={`navbar navbar-${theme.state.theme} navbar-expand-lg bg-${
+          theme.state.theme === "dark" ? "dark" : "light"
         } sticky-top`}
       >
         <div className="container-fluid">
@@ -141,15 +141,19 @@ function Navbar(props) {
                 role="switch"
                 id="flexSwitchCheckChecked"
                 defaultChecked=""
-                onClick={props.changeTheme}
+                onClick={() => {
+                  theme.update(
+                    theme.state.theme === "light" ? "dark" : "light"
+                  );
+                }}
               />
               <label
                 className={`form-check-label text-${
-                  props.theme === "light" ? "dark" : "light"
+                  theme.state.theme === "light" ? "dark" : "light"
                 }`}
                 htmlFor="flexSwitchCheckChecked"
               >
-                {props.theme === "light"
+                {theme.state.theme === "light"
                   ? "Enable Dark Mode"
                   : "Disable Dark Mode"}
               </label>
