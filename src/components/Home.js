@@ -1,9 +1,8 @@
 import "../App.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import ImageItem from "./ImageItem";
 import imageNotFound from "../assets/imageNotFound.gif";
 import filterContext from "../context/filter/filterContext";
-import { useContext } from "react";
 
 function Home(props) {
   const filter = useContext(filterContext);
@@ -37,7 +36,6 @@ function Home(props) {
       } else {
         if (newSearch === true) {
           let filterImage = parsedData.results;
-          console.log(filter.state.onlySquare);
           if (filter.state.onlySquare === true) {
             setImageArray(filterImage.filter(filterSquare));
           } else {

@@ -41,7 +41,7 @@ function ImageItem(props) {
         <span
           className={`${
             props.quality === "high" ? "position-absolute" : "d-none"
-          } top-0 start-100 translate-middle badge rounded-pill bg-danger px-2`}
+          } top-0 start-100 translate-middle badge rounded-pill bg-danger px-2 mt-3`}
         >
           HD
           <span className="visually-hidden">Image Quality</span>
